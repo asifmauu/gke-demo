@@ -4,14 +4,14 @@ terraform {
     commands = ["apply", "plan"]
     execute  = [
       "bash", "-c",
-      "gcloud kms keyrings create --location global keyring-main || true",
+      "gcloud kms keyrings create --location asia-southeast2 keyring-main || true",
     ]
   }
   before_hook "create-kms-key-github" {
     commands = ["apply", "plan"]
     execute  = [
       "bash", "-c",
-      "gcloud kms keys create key-github --purpose=encryption --location global --keyring keyring-main || true",
+      "gcloud kms keys create key-github --purpose=encryption --location asia-southeast2 --keyring keyring-main || true",
     ]
   }
 }
